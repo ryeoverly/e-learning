@@ -1,0 +1,82 @@
+// ELearningHomePage.jsx
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Book, User, Star } from "lucide-react";
+
+const ELearningHomePage = () => {
+  return (
+    <div className="font-sans">
+      {/* Navbar */}
+      <nav className="flex items-center justify-between px-8 py-4 shadow-md bg-white">
+        <h1 className="text-2xl font-bold text-blue-600">Learnify</h1>
+        <div className="space-x-4">
+          <Button variant="ghost">Courses</Button>
+          <Button variant="ghost">Pricing</Button>
+          <Button variant="ghost">About</Button>
+          <Button className="bg-blue-600 text-white">Sign In</Button>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="text-center px-8 py-20 bg-gradient-to-br from-blue-50 to-blue-100">
+        <h2 className="text-4xl font-bold mb-4">Upskill Anytime, Anywhere</h2>
+        <p className="text-gray-600 max-w-xl mx-auto mb-6">
+          Join thousands of learners across the globe. Access top-rated courses in tech, business, and more.
+        </p>
+        <Button className="bg-blue-600 text-white px-6 py-3 text-lg">Browse Courses</Button>
+      </section>
+
+      {/* Featured Courses */}
+      <section className="px-8 py-16 bg-white">
+        <h3 className="text-3xl font-bold mb-8 text-center">Featured Courses</h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { title: "Web Development Bootcamp", icon: <Book /> },
+            { title: "Intro to Data Science", icon: <Book /> },
+            { title: "Digital Marketing Mastery", icon: <Book /> },
+          ].map((course, idx) => (
+            <Card key={idx} className="p-4 hover:shadow-lg transition">
+              <CardContent>
+                <div className="flex items-center space-x-2 mb-2 text-blue-600">{course.icon}<span>{course.title}</span></div>
+                <p className="text-sm text-gray-600">Learn the essentials with hands-on projects and expert instructors.</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="px-8 py-16 bg-blue-50">
+        <h3 className="text-3xl font-bold mb-8 text-center">What Our Students Say</h3>
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {[
+            { name: "Emily", review: "The courses are well-structured and easy to follow!", rating: 5 },
+            { name: "James", review: "I landed a job after completing the web dev track!", rating: 5 },
+          ].map((t, idx) => (
+            <Card key={idx} className="p-4">
+              <CardContent>
+                <div className="flex items-center mb-2 text-blue-600">
+                  <User className="mr-2" /> {t.name}
+                </div>
+                <p className="text-sm text-gray-700 italic mb-2">"{t.review}"</p>
+                <div className="text-yellow-500 flex">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white text-center py-6 text-sm text-gray-500 border-t">
+        © {new Date().getFullYear()} Learnify. All rights reserved.
+      </footer>
+    </div>
+  );
+};
+
+export default ELearningHomePage;
