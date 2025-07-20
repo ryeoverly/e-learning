@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Math E-Learning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .problem {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+
+    input[type="number"] {
+      font-size: 18px;
+      padding: 8px;
+      width: 100px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .feedback {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Math Practice</h1>
+    <div class="problem" id="problem"></div>
+    <input type="number" id="answer" placeholder="Your answer" />
+    <br />
+    <button onclick="checkAnswer()">Submit</button>
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <script>
+    let num1, num2;
+
+    function generateProblem() {
+      num1 = Math.floor(Math.random() * 10);
+      num2 = Math.floor(Math.random() * 10);
+      document.getElementById('problem').textContent = `${num1} + ${num2} = ?`;
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('answer').value = '';
+    }
+
+    function checkAnswer() {
+      const userAnswer = parseInt(document.getElementById('answer').value, 10);
+      const correct = num1 + num2;
+
+      if (userAnswer === correct) {
+        document.getElementById('feedback').textContent = "✅ Correct!";
+      } else {
+        document.getElementById('feedback').textContent = `❌ Oops! The correct answer was ${correct}`;
+      }
+
+      setTimeout(generateProblem, 2000); // Load next problem after 2 seconds
+    }
+
+    // Initialize
+    generateProblem();
+  </script>
+</body>
+</html>
