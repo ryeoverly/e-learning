@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>English Learning | LearnOnline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>English Learning</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Vocabulary</a>
+      <a href="#">Quiz</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Welcome to English Mastery</h2>
+      <p>Improve your grammar, vocabulary, speaking, and writing skills with interactive lessons.</p>
+    </section>
+
+    <section class="video-lessons">
+      <h3>Video Lessons</h3>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/1cmvZQ_dhXs" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="vocabulary">
+      <h3>Vocabulary Flashcards</h3>
+      <div class="flashcards">
+        <div class="card" onclick="flipCard(this)">Hello<br><span class="definition">A greeting</span></div>
+        <div class="card" onclick="flipCard(this)">Quick<br><span class="definition">Fast or rapid</span></div>
+        <div class="card" onclick="flipCard(this)">Beautiful<br><span class="definition">Pleasing to the eye</span></div>
+      </div>
+    </section>
+
+    <section class="quiz-preview">
+      <h3>Mini Quiz</h3>
+      <p>Test your skills with a quick quiz.</p>
+      <button onclick="alert('This will launch a short quiz!')">Start Quiz</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 LearnOnline. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function flipCard(card) {
+      card.classList.toggle('flipped');
+    }
+  </script>
+</body>
+</html>
