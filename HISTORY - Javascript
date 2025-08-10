@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Learning Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .lesson {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .details {
+            display: none;
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>World History Lessons</h1>
+    <p>Explore key moments that shaped our world. Click on a lesson to learn more.</p>
+
+    <div id="lessons-container"></div>
+
+    <script>
+        // Array of lesson data
+        const lessons = [
+            {
+                title: "The Fall of the Roman Empire",
+                summary: "Learn why one of the most powerful empires in history came to an end.",
+                details: "The Western Roman Empire fell in 476 AD due to political corruption, economic troubles, and invasions by barbarian tribes."
+            },
+            {
+                title: "The Renaissance",
+                summary: "A cultural rebirth that reshaped art, science, and literature.",
+                details: "The Renaissance began in Italy in the 14th century, marked by artists like Leonardo da Vinci and Michelangelo, and thinkers like Galileo."
+            },
+            {
+                title: "The Industrial Revolution",
+                summary: "A period of rapid industrial growth in the 18th and 19th centuries.",
+                details: "It started in Britain and spread worldwide, changing manufacturing, transportation, and society forever."
+            }
+        ];
+
+        const container = document.getElementById("lessons-container");
+
+        // Create lesson cards dynamically
+        lessons.forEach((lesson, index) => {
+            const lessonDiv = document.createElement("div");
+            lessonDiv.className = "lesson";
+
+            lessonDiv.innerHTML = `
+                <h3>${lesson.title}</h3>
+                <p>${lesson.summary}</p>
+                <button onclick="toggleDetails(${index})">Show More</button>
+                <div class="details" id="details-${index}">${lesson.details}</div>
+            `;
+
+            container.appendChild(lessonDiv);
+        });
+
+        // Toggle details visibility
+        function toggleDetails(index) {
+            const detailsDiv = document.getElementById(`details-${index}`);
+            if (detailsDiv.style.display === "block") {
+                detailsDiv.style.display = "none";
+            } else {
+                detailsDiv.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
