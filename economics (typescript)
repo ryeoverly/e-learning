@@ -1,0 +1,166 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { BookOpen, CircleDollarSign, PlayCircle, TrendingUp, Users, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+// -------------------------------
+// Mock Data
+// -------------------------------
+const featuredCourses = [
+  {
+    id: "microeconomics",
+    title: "Introduction to Microeconomics",
+    description: "Understand how individuals and firms make decisions under scarcity.",
+    duration: "4 weeks",
+    students: "12k",
+  },
+  {
+    id: "macroeconomics",
+    title: "Principles of Macroeconomics",
+    description: "Explore GDP, inflation, and government policy at the national level.",
+    duration: "6 weeks",
+    students: "9k",
+  },
+  {
+    id: "finance",
+    title: "Money, Banking, and Finance",
+    description: "Learn how money works in modern economies and financial markets.",
+    duration: "5 weeks",
+    students: "7.5k",
+  },
+];
+
+const upcomingEvents = [
+  {
+    date: "Sep 2, 2025",
+    title: "Live Webinar: Inflation in 2025",
+    description: "Discussion on rising global prices and central bank strategies.",
+  },
+  {
+    date: "Sep 12, 2025",
+    title: "Guest Lecture: Behavioral Economics",
+    description: "How psychology intersects with financial decision-making.",
+  },
+  {
+    date: "Sep 21, 2025",
+    title: "Q&A: Preparing for Final Exams",
+    description: "Open session with instructors to help with exam review.",
+  },
+];
+
+// -------------------------------
+// Components
+// -------------------------------
+function CourseCard({ course }) {
+  return (
+    <Card className="rounded-2xl shadow-sm">
+      <CardHeader>
+        <CardTitle className="text-lg flex items-center gap-2">
+          <BookOpen className="h-5 w-5" /> {course.title}
+        </CardTitle>
+        <CardDescription>{course.description}</CardDescription>
+      </CardHeader>
+      <CardContent className="flex justify-between items-center">
+        <div className="text-sm text-muted-foreground flex gap-4">
+          <span className="flex items-center gap-1"><Calendar className="h-4 w-4" /> {course.duration}</span>
+          <span className="flex items-center gap-1"><Users className="h-4 w-4" /> {course.students}</span>
+        </div>
+        <Button className="rounded-xl">Start</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+function EventCard({ event }) {
+  return (
+    <Card className="rounded-2xl">
+      <CardHeader>
+        <CardTitle className="text-base flex items-center gap-2">
+          <PlayCircle className="h-5 w-5" /> {event.title}
+        </CardTitle>
+        <CardDescription>{event.description}</CardDescription>
+      </CardHeader>
+      <CardContent className="text-sm text-muted-foreground">
+        {event.date}
+      </CardContent>
+    </Card>
+  );
+}
+
+// -------------------------------
+// Main Page
+// -------------------------------
+export default function EconomicsHomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
+      {/* Hero Section */}
+      <section className="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs text-muted-foreground">
+            <CircleDollarSign className="h-4 w-4" /> Economics
+          </div>
+          <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
+            Explore Economics with Interactive Learning
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground max-w-xl">
+            Build a strong foundation in micro and macroeconomics with guided lessons,
+            interactive quizzes, and real-world case studies.
+          </p>
+          <div className="mt-6 flex gap-3">
+            <Button className="rounded-2xl">Browse Courses</Button>
+            <Button variant="secondary" className="rounded-2xl">Join Community</Button>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex items-center justify-center"
+        >
+          <TrendingUp className="h-48 w-48 text-slate-300" />
+        </motion.div>
+      </section>
+
+      {/* Featured Courses */}
+      <section className="mx-auto max-w-6xl px-6 py-12">
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <BookOpen className="h-6 w-6" /> Featured Courses
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {featuredCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
+          ))}
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="mx-auto max-w-6xl px-6 py-12">
+        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <Calendar className="h-6 w-6" /> Upcoming Events
+        </h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {upcomingEvents.map((event, idx) => (
+            <EventCard key={idx} event={event} />
+          ))}
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="bg-slate-100 py-12 mt-12">
+        <div className="mx-auto max-w-4xl text-center px-6">
+          <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+          <p className="text-muted-foreground mb-6">
+            Join thousands of learners and master economics at your own pace.
+          </p>
+          <Button size="lg" className="rounded-2xl">Enroll Today</Button>
+        </div>
+      </section>
+    </div>
+  );
+}
