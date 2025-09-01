@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Accounting - E-Learning App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; 
+      padding: 0;
+      background-color: #f5f6fa;
+    }
+    header {
+      background-color: #2d3436;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #636e72;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
+    }
+    .course-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .progress {
+      height: 20px;
+      background: #dfe6e9;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #0984e3;
+      width: 0%;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #00b894;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #019875;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Accounting E-Learning</h1>
+    <p>Welcome back! Continue your learning journey.</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">Progress</a>
+    <a href="#">Profile</a>
+  </nav>
+
+  <div class="container">
+    <div class="course-card">
+      <h2>Introduction to Accounting</h2>
+      <p>Learn the basics of financial statements, assets, and liabilities.</p>
+      <div class="progress">
+        <div class="progress-bar" id="progress1">0%</div>
+      </div>
+      <button onclick="updateProgress('progress1')">Continue Lesson</button>
+    </div>
+
+    <div class="course-card">
+      <h2>Financial Accounting</h2>
+      <p>Explore balance sheets, income statements, and cash flow management.</p>
+      <div class="progress">
+        <div class="progress-bar" id="progress2">0%</div>
+      </div>
+      <button onclick="updateProgress('progress2')">Continue Lesson</button>
+    </div>
+
+    <div class="course-card">
+      <h2>Managerial Accounting</h2>
+      <p>Learn cost analysis, budgeting, and decision-making techniques.</p>
+      <div class="progress">
+        <div class="progress-bar" id="progress3">0%</div>
+      </div>
+      <button onclick="updateProgress('progress3')">Continue Lesson</button>
+    </div>
+  </div>
+
+  <script>
+    function updateProgress(id) {
+      const bar = document.getElementById(id);
+      let current = parseInt(bar.innerText.replace("%", ""));
+      if (current < 100) {
+        current += 10; // add 10% each click
+        bar.style.width = current + "%";
+        bar.innerText = current + "%";
+      } else {
+        alert("Course completed!");
+      }
+    }
+  </script>
+</body>
+</html>
