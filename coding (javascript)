@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Lesson Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        p.description {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .lesson-modules {
+            list-style: none;
+            padding: 0;
+        }
+        .lesson-modules li {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .lesson-modules li.completed {
+            background-color: #d4edda;
+        }
+        .start-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1em;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .start-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Introduction to JavaScript</h1>
+    </header>
+    <main>
+        <p class="description">
+            Welcome to the JavaScript coding lesson! Here you'll learn the basics of variables, functions, loops, and more.
+            Track your progress and complete each module to become proficient in JavaScript.
+        </p>
+
+        <ul class="lesson-modules" id="modulesList">
+            <li>Variables and Data Types <span>🔒</span></li>
+            <li>Functions <span>🔒</span></li>
+            <li>Loops <span>🔒</span></li>
+            <li>DOM Manipulation <span>🔒</span></li>
+        </ul>
+
+        <button class="start-btn" id="startBtn">Start Lesson</button>
+    </main>
+
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const modules = document.querySelectorAll('#modulesList li');
+        let currentModule = 0;
+
+        startBtn.addEventListener('click', () => {
+            if(currentModule < modules.length) {
+                modules[currentModule].classList.add('completed');
+                modules[currentModule].querySelector('span').textContent = '✅';
+                currentModule++;
+                if(currentModule === modules.length) {
+                    alert("Congratulations! You completed all modules.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
